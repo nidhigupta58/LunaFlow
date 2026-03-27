@@ -1,20 +1,58 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# LunaFlow - Period & Cycle Tracker
 
-# Run and deploy your AI Studio app
+LunaFlow is a comprehensive, full-stack period and cycle tracking application. It provides real-time insights into your cycle, including period predictions, ovulation windows, and safe days, all presented in a beautiful, organic aesthetic.
 
-This contains everything you need to run your app locally.
+## Project Setup (Development)
 
-View your app in AI Studio: https://ai.studio/apps/cd711082-1e4c-4b91-b052-15109f3d41b2
+To get started with development, follow these steps:
 
-## Run Locally
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
 
-**Prerequisites:**  Node.js
+2.  **Environment Variables**:
+    Create a `.env` file in the root directory based on `.env.example`. You will need to provide:
+    - `GOOGLE_CLIENT_ID`: Your Google OAuth Client ID.
+    - `GOOGLE_CLIENT_SECRET`: Your Google OAuth Client Secret.
+    - `APP_URL`: The base URL of your development environment.
 
+3.  **Start Development Server**:
+    ```bash
+    npm run dev
+    ```
+    The application will be accessible at `http://localhost:3000`.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Production Setup
+
+For production deployment, follow these steps:
+
+1.  **Build the Application**:
+    ```bash
+    npm run build
+    ```
+    This command compiles the frontend assets and places them in the `dist/` directory.
+
+2.  **Start the Production Server**:
+    ```bash
+    npm start
+    ```
+    The server will serve the static files from the `dist/` directory and handle API requests.
+
+## Google OAuth Configuration
+
+To enable Google Calendar integration, you must configure your Google Cloud Console:
+
+1.  **Create Credentials**: Go to the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) and create an OAuth 2.0 Client ID.
+2.  **Authorized Redirect URIs**: Add the following callback URLs to your application settings:
+    - **Development URL**: `https://ais-dev-in7wdqvtk7t5rleskkaf4b-636053895605.asia-east1.run.app/auth/callback`
+    - **Shared/Deployed URL**: `https://ais-pre-in7wdqvtk7t5rleskkaf4b-636053895605.asia-east1.run.app/auth/callback`
+3.  **Save Credentials**: Once you have saved your Client ID and Client Secret in your environment variables, the application will be able to securely authenticate users and sync events with their Google Calendar.
+
+## Features
+
+- **Cycle Tracking**: Log your periods and track your cycle history.
+- **Dynamic Predictions**: Visualize your ovulation window and safe days with varying color intensities.
+- **AI Insights**: Receive personalized health recommendations based on your cycle phase.
+- **Google Calendar Sync**: Automatically add your cycle events to your Google Calendar.
+- **Profile Management**: Update your health stats and cycle preferences at any time.
